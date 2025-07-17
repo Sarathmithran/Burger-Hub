@@ -1,26 +1,33 @@
-import React from 'react'
+import React from 'react';
+import heroVideo from '../../assets/video/hero-video.mp4';
 
 const HeroSection = () => {
   return (
-    <div
-        className="hero min-h-screen"
-        style={{
-          backgroundImage:
-            "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-        }}
+    <div className="hero min-h-screen relative overflow-hidden">
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
       >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-neutral-content text-center">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-            <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-              quasi. In deleniti eaque aut repudiandae et a id nisi.
-            </p>
-            <button className="btn btn-primary">Get Started</button>
-          </div>
+        <source src={heroVideo} type="video/mp4" />
+      </video>
+      
+      {/* Overlay */}
+      <div className="hero-overlay relative z-10"></div>
+      
+      <div className="hero-content text-neutral-content text-center relative z-20">
+        <div className="max-w-md">
+          <h1 className="mb-5 text-5xl font-bold">Welcome to Burger Hub</h1>
+          <p className="mb-5">
+            Craving something unforgettable? Our handcrafted burgers are made with the freshest ingredients and boldest flavors. 
+            Come taste what greatness really means.
+          </p>
+          <button className="btn bg-orange-500 hover:bg-orange-600 broder border-none shadow">Order Now</button>
         </div>
       </div>
+    </div>
   )
 }
 
