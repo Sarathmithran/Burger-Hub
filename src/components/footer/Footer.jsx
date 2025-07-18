@@ -1,7 +1,11 @@
 import React from "react";
+import Diff from "../diff/Diff";
+import Payment from "../../assets/svg/Payment";
 
 const Footer = () => {
   return (
+    <>
+    <Diff/>
     <footer className="footer bg-base-300 text-base-content p-10">
       <div className="w-full flex flex-col items-center sm:items-start sm:flex-row sm:justify-around">
         <nav className="text-center sm:text-left mb-6 sm:mb-0">
@@ -56,9 +60,18 @@ const Footer = () => {
               </svg>
             </a>
           </div>
+          <section className="mt-4">
+            <h3>Accepted Payment Methods</h3>
+            <ul class="flex mt-2">
+              <li>
+                <Payment/>
+              </li>
+            </ul>
+          </section> 
         </nav>
       </div>
     </footer>
+    </>
   );
 };
 
