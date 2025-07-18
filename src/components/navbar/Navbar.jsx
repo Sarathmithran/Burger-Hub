@@ -53,7 +53,7 @@ const Navbar = () => {
                 Contact
               </a>
             </li>
-            <li>
+            <li className="tooltip tooltip-bottom" data-tip="Hurry-up">
               <a className="text-lg btn bg-orange-500 hover:bg-orange-600 border-orange-600 hover:border-orange-700 text-white transition-colors duration-200 rounded-full">
                 Order Now
               </a>

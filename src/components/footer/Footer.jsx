@@ -1,6 +1,6 @@
 import React from "react";
 import Diff from "../diff/Diff";
-import Payment from "../../assets/svg/Payment";
+import Payment from "../svg/Payment";
 
 const Footer = () => {
   return (
