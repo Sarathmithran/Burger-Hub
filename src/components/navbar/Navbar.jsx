@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../../assets/img/logo.png'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,14 +30,14 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <ul className="menu menu-horizontal px-1 hidden lg:flex">
             <li>
-              <a className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
+              <Link to={'/'} className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
+              <Link to={'/menu'} className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
                 Menu
-              </a>
+              </Link>
             </li>
             <li>
               <a className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
@@ -125,22 +126,24 @@ const Navbar = () => {
             <li className={`transform transition-all duration-300 ease-in-out ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`} style={{ transitionDelay: isMenuOpen ? '100ms' : '0ms' }}>
-              <a
+              <Link 
+                to={'/'}
                 onClick={closeMenu}
                 className="block text-2xl text-gray-200 hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li className={`transform transition-all duration-300 ease-in-out ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`} style={{ transitionDelay: isMenuOpen ? '150ms' : '0ms' }}>
-              <a
+              <Link
+                to={'/menu'}
                 onClick={closeMenu}
                 className="block text-2xl text-gray-200 hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer"
               >
                 Menu
-              </a>
+              </Link>
             </li>
             <li className={`transform transition-all duration-300 ease-in-out ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
