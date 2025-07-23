@@ -1,5 +1,4 @@
 import React from 'react';
-import MENU_ITEMS from '../../../data/menuItems'
 import SearchSection from '../searchSection/SearchSection';
 import CategoriesSection from '../categoriesSection/CategoriesSection';
 import PriceRangeSection from '../priceRangeSection/PriceRangeSection';
@@ -25,7 +24,6 @@ const FilterSidebar = ({
     <CategoriesSection 
       selectedCategory={selectedCategory} 
       setSelectedCategory={setSelectedCategory}
-      menuItems={MENU_ITEMS}
     />
     
     <PriceRangeSection priceRange={priceRange} setPriceRange={setPriceRange} />

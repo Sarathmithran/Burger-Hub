@@ -1,9 +1,9 @@
 const CATEGORIES = [
   { value: 'all', label: 'All Items', emoji: '🍽️' },
-  { value: 'burgers', label: 'Burgers', emoji: '🍔' },
-  { value: 'sides', label: 'Sides', emoji: '🍟' },
-  { value: 'drinks', label: 'Drinks', emoji: '🥤' },
-  { value: 'desserts', label: 'Desserts', emoji: '🍰' }
+  { value: 'Burgers', label: 'Burgers', emoji: '🍔' },
+  { value: 'Sides', label: 'Sides', emoji: '🍟' },
+  { value: 'Drinks', label: 'Drinks', emoji: '🥤' },
+  { value: 'Desserts', label: 'Desserts', emoji: '🍰' }
 ];
 
 export default CATEGORIES;

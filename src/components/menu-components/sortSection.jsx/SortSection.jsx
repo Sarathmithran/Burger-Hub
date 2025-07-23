@@ -12,7 +12,7 @@ const SortSection = ({ sortBy, setSortBy, sortOrder, setSortOrder }) => {
       <h2 className="text-xl font-bold text-white">Sort By</h2>
       <div className="space-y-3">
         <select 
-          className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-red-500 focus:ring-2 focus:ring-red-500/20 focus:outline-none"
+          className="w-full px-2 py-3 cursor-pointer bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-red-500 focus:ring-2 focus:ring-red-500/20 focus:outline-none"
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
         >
@@ -24,7 +24,7 @@ const SortSection = ({ sortBy, setSortBy, sortOrder, setSortOrder }) => {
         </select>
         
         <button
-          className={`w-full px-4 py-3 rounded-lg border transition-all duration-200 flex items-center justify-center gap-2 ${
+          className={`w-full px-4 py-3 cursor-pointer rounded-lg border transition-all duration-200 flex items-center justify-center gap-2 ${
             sortOrder === 'desc' 
               ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white border-transparent' 
               : 'bg-gray-700 text-gray-300 border-gray-600 hover:bg-gray-600'

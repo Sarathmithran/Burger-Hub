@@ -1,8 +1,9 @@
 import React from 'react'
+import noProduct from '../../../assets/img/no-product-found.png'
 
 const NoResults = ({ onReset }) => (
   <div className="text-center py-16">
-    <div className="text-8xl mb-6">🔍</div>
+    <div className="flex justify-center mb-6"><img src={noProduct} alt='no-product-found' width={110} /></div>
     <h3 className="text-3xl font-bold mb-4 text-white">No items found</h3>
     <p className="text-gray-400 mb-6 max-w-md mx-auto">
       We couldn't find any menu items matching your criteria. Try adjusting your search or filters.
