@@ -9,7 +9,7 @@ const NoResults = ({ onReset }) => (
       We couldn't find any menu items matching your criteria. Try adjusting your search or filters.
     </p>
     <button 
-      className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-6 py-3 rounded-lg transition-all duration-200 hover:scale-105"
+      className="cursor-pointer bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-6 py-3 rounded-lg transition-all duration-200 hover:scale-105"
       onClick={onReset}
     >
       Reset Filters
