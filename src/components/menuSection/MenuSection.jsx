@@ -28,7 +28,7 @@ const MenuSection = () => {
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map(item => (
-            <Link to={`/detail-page/${item.id}`} class="flex flex-col justify-between cursor-pointer menu-item bg-white rounded-2xl shadow-lg overflow-hidden">
+            <Link to={`/menu/${item.id}`} class="flex flex-col justify-between cursor-pointer menu-item bg-white rounded-2xl shadow-lg overflow-hidden">
               <div class="relative overflow-hidden">
                 <img
                   src={item.image}

@@ -193,7 +193,7 @@ const DetailPage = () => {
           <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-900">You Might Also Like</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {related?.map((item, index) => (
-              <Link to={`/detail-page/${item.id}`} key={index}  onClick={()=> resetMenuView()} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+              <Link to={`/menu/${item.id}`} key={index}  onClick={()=> resetMenuView()} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
                 <div className="h-32 sm:h-48">
                   <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                 </div>
