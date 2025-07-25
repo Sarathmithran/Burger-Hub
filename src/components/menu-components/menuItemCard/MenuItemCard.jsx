@@ -1,10 +1,14 @@
 import React from 'react'
 import { ShoppingCart, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const MenuItemCard = ({ items, addToCart }) => (
+const MenuItemCard = ({ items, addToCart }) => {
+
+    return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
         {items.map(item => (
-            <div className="bg-gray-800 cursor-pointer rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-700 overflow-hidden">
+            <Link to={`/detail-page/${item.id}`} className="bg-gray-800 cursor-pointer rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 
+            hover:-translate-y-1 border border-gray-700 overflow-hidden">
                 <figure className="relative overflow-hidden">
                 <img 
                     src={item.image} 
@@ -51,9 +55,10 @@ const MenuItemCard = ({ items, addToCart }) => (
                     </button>
                 </div>
                 </div>
-            </div>
+            </Link>
         ))}
   </div>
 );
+};
 
 export default MenuItemCard

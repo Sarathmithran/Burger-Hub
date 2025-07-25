@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBurgers } from "../../features/menu/menuThunk";
+import { Link } from "react-router-dom";
 
 const MenuSection = () => {
 
@@ -27,7 +28,7 @@ const MenuSection = () => {
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map(item => (
-            <div class="cursor-pointer menu-item bg-white rounded-2xl shadow-lg overflow-hidden">
+            <Link to={`/detail-page/${item.id}`} class="flex flex-col justify-between cursor-pointer menu-item bg-white rounded-2xl shadow-lg overflow-hidden">
               <div class="relative overflow-hidden">
                 <img
                   src={item.image}
@@ -43,8 +44,7 @@ const MenuSection = () => {
                   {item.name}
                 </h3>
                 <p class="text-gray-600 mb-4 leading-relaxed">
-                  Juicy beef patty with lettuce, tomato, onion, pickles, and our
-                  signature sauce on a toasted brioche bun.
+                  {item.description}
                 </p>
                 <div class="flex items-center justify-between">
                   <span class="text-sm text-gray-500">🕒 15 min</span>
@@ -53,7 +53,7 @@ const MenuSection = () => {
                   </button>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
