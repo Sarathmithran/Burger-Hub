@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
 import logo from '../../assets/img/logo.png'
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from '../../features/auth/authThunk';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      dispatch(logoutUser());
+    } catch (err) {
+      console.error('Logout failed', err);  
+    }
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -54,16 +66,26 @@ const Navbar = () => {
                 Contact
               </a>
             </li>
-            <li>
-              <Link to={'/login'} className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
-                Login
-              </Link>
-            </li>
-            <li className="tooltip tooltip-bottom" data-tip="Hurry-up">
+            {
+              isAuthenticated ? (
+                <li>
+                  <Link onClick={() => {handleLogout()}} className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
+                    Logout
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  <Link to={'/login'} className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
+                    Login
+                  </Link>
+                </li>
+              )
+            }
+            {/* <li className="tooltip tooltip-bottom" data-tip="Hurry-up">
               <a className="text-lg btn bg-orange-500 hover:bg-orange-600 border-orange-600 hover:border-orange-700 text-white transition-colors duration-200 rounded-full">
                 Order Now
               </a>
-            </li>
+            </li> */}
           </ul>
 
           {/* Mobile Hamburger Menu */}
@@ -191,7 +213,7 @@ const Navbar = () => {
                 Login
               </Link>
             </li>
-            <li className={`pt-4 transform transition-all duration-300 ease-in-out ${
+            {/* <li className={`pt-4 transform transition-all duration-300 ease-in-out ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`} style={{ transitionDelay: isMenuOpen ? '350ms' : '0ms' }}>
               <a
@@ -200,7 +222,7 @@ const Navbar = () => {
               >
                 Order Now
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

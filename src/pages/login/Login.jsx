@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../../assets/img/logo.png'
+import { loginUser, registerUser } from '../../features/auth/authThunk';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -17,14 +19,28 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (isLogin) {
-      console.log('Login submitted:', { email: formData.email, password: formData.password });
-    } else {
-      console.log('Sign up submitted:', formData);
+  const dispatch = useDispatch();
+const { loading, error } = useSelector(state => state.auth);
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  if (isLogin) {
+    dispatch(loginUser({ email: formData.email, password: formData.password }));
+  } else {
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match");
+      return;
     }
-  };
+
+    dispatch(registerUser({
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+      password_confirmation: formData.confirmPassword,
+    }));
+  }
+};
 
   const toggleMode = () => {
     setIsLogin(!isLogin);
@@ -59,7 +75,7 @@ const Login = () => {
                   className={`flex-1 cursor-pointer py-3 px-4 text-sm font-medium rounded-lg transition-all duration-300 ${
                     isLogin ? 'text-white z-10' : 'text-gray-600 hover:text-gray-800'
                   }`}
-                  onClick={() => setIsLogin(true)}
+                  onClick={() => toggleMode()}
                 >
                   Login
                 </button>
@@ -67,7 +83,7 @@ const Login = () => {
                   className={`flex-1 cursor-pointer py-3 px-4 text-sm font-medium rounded-lg transition-all duration-300 ${
                     !isLogin ? 'text-white z-10' : 'text-gray-600 hover:text-gray-800'
                   }`}
-                  onClick={() => setIsLogin(false)}
+                  onClick={() => toggleMode()}
                 >
                   Sign Up
                 </button>
