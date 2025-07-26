@@ -9,6 +9,7 @@ import DetailPage from './pages/detailPage/DetailPage';
 import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Register from './pages/Register/Register';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/login" element={<Login />} /> 
+        <Route path="/register" element={<Register />} /> 
         <Route path="/" element={<Home />} />  
         <Route path="/menu" element={<Menu />} /> 
         <Route path="/menu/:id" element={<DetailPage />} />      
