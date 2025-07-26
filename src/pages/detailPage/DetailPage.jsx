@@ -3,10 +3,14 @@ import { Star, Plus, Minus, ShoppingCart, Clock, Users, ChefHat } from 'lucide-r
 import { Link, useParams } from 'react-router-dom';
 import { fetchMenuDetails } from '../../features/menu/menuThunk';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { addToCart } from '../../features/cart/cartThunk';
 
 const DetailPage = () => {
 
   const { id } = useParams();
+  const [quantity, setQuantity] = useState(1);
+  const [activeTab, setActiveTab] = useState('description');  
   const dispatch = useDispatch();
   const item = useSelector(state => state.menu.menuDetails?.item || {});
   const { menu, related } = item;
@@ -25,9 +29,25 @@ const DetailPage = () => {
     };
   }, [menu?.name]);
 
-  const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState('description');  
-
+  ;
+  
+  const handleAddToCart = async () => {
+    const payload = {
+        menu_id: menu?.id,
+        quantity
+      };
+  
+      try {
+        await dispatch(addToCart(payload)).unwrap();
+          toast.success('Item added to cart');
+        } catch (error) {
+          if (error?.status === 401) {
+            toast.error('Login to your account');
+            return;
+          }
+        toast.error('Failed to add item to cart');
+      }
+  };
 
   const calculateTotalPrice = () => {
     return menu?.price * quantity;
@@ -36,6 +56,7 @@ const DetailPage = () => {
   const resetMenuView  = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setQuantity(1);
+    setActiveTab('description');
   }
 
   const ingredients = typeof menu?.ingredients === 'string'
@@ -116,7 +137,7 @@ const DetailPage = () => {
               </div>
 
               <div className="flex gap-3">
-                <button className="cursor-pointer flex-1 bg-orange-500 hover:bg-orange-600 text-white py-3 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors text-sm sm:text-base">
+                <button onClick={handleAddToCart} className="cursor-pointer flex-1 bg-orange-500 hover:bg-orange-600 text-white py-3 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors text-sm sm:text-base">
                   <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
                   Add to Cart - ${calculateTotalPrice().toFixed(2)}
                 </button>
@@ -201,9 +222,13 @@ const DetailPage = () => {
                   <h4 className="font-semibold text-base sm:text-lg text-gray-900 mb-3">{item.name}</h4>
                   <div className="flex items-center justify-between">
                     <span className="text-lg sm:text-xl font-bold text-orange-500">${item.price}</span>
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors">
-                      Add to Cart
-                    </button>
+
+                    <div className="flex items-center gap-1 bg-yellow-100 text-yellow-700 px-2 py-1 rounded-md text-sm font-medium">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-4 h-4" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.966a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.462a1 1 0 00-.364 1.118l1.286 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.462a1 1 0 00-1.176 0l-3.388 2.462c-.785.57-1.84-.197-1.54-1.118l1.286-3.966a1 1 0 00-.364-1.118L2.045 9.393c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.966z" />
+                      </svg>
+                      <span>{item.rating}</span>
+                    </div>
                   </div>
                 </div>
               </Link>

@@ -18,4 +18,22 @@ axiosInstance.interceptors.request.use((config) => {
   return Promise.reject(error);
 });
 
+//Handle 401 Unauthorized globally
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      // Remove token
+      localStorage.removeItem("token");
+      // Remove user
+      localStorage.removeItem("user");
+
+      //redirect to login
+      window.dispatchEvent(new Event("unauthorized")); // Dispatch event
+    }
+
+    return Promise.reject(error);
+  }
+);
+
 export default axiosInstance;

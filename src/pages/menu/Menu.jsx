@@ -13,7 +13,6 @@ const Menu = () => {
   const [sortBy, setSortBy] = useState('name');
   const [sortOrder, setSortOrder] = useState('asc');
   const [priceRange, setPriceRange] = useState([0, 20]);
-  const [cart, setCart] = useState([]);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
   // Filter and sort menu items
@@ -54,11 +53,6 @@ const Menu = () => {
     return filtered;
   }, [menuItems, searchTerm, selectedCategory, sortBy, sortOrder, priceRange]);
 
-
-  const addToCart = (item) => {
-    setCart([...cart, item]);
-  };
-
   const resetFilters = () => {
     setSearchTerm('');
     setSelectedCategory('all');
@@ -82,7 +76,6 @@ const Menu = () => {
               setSortBy={setSortBy}
               sortOrder={sortOrder}
               setSortOrder={setSortOrder}
-              cart={cart}
               setIsMobileFilterOpen={setIsMobileFilterOpen}
             />
           </div>
@@ -108,7 +101,6 @@ const Menu = () => {
                 setSortBy={setSortBy}
                 sortOrder={sortOrder}
                 setSortOrder={setSortOrder}
-                cart={cart}
                 setIsMobileFilterOpen={setIsMobileFilterOpen}
               />
             </div>
@@ -117,14 +109,14 @@ const Menu = () => {
 
         {/* Main Content */}
         <div className="flex-1 min-w-0">
-          <MobileHeader cart={cart} setIsMobileFilterOpen={setIsMobileFilterOpen} />
+          <MobileHeader setIsMobileFilterOpen={setIsMobileFilterOpen} />
           
           <div className="p-4 lg:p-8">
             <ResultsHeader filteredItemsCount={filteredAndSortedItems.length} />
 
             {/* Menu Items or No Results */}
             {filteredAndSortedItems.length > 0 ? (
-              <MenuItemCard items={filteredAndSortedItems} addToCart={addToCart} />
+              <MenuItemCard items={filteredAndSortedItems} />
             ) : (
               <NoResults onReset={resetFilters} />
             )}
