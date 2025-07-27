@@ -1,5 +1,6 @@
 import React from 'react';
 import heroVideo from '../../assets/video/hero-video.mp4';
+import heroImg from '../../assets/img/hero.webp';
 
 const HeroSection = () => {
   return (
@@ -10,8 +11,13 @@ const HeroSection = () => {
         loop
         muted
         playsInline
+        preload="auto" 
+        poster={heroImg} // Shows while video loads
+        aria-label="Background video showing our product in action"
       >
         <source src={heroVideo} type="video/mp4" />
+        {/* Fallback Img */}
+        <img src={heroImg} alt="Hero section background" />
       </video>
       
       {/* Overlay */}
