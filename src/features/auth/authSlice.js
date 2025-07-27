@@ -22,6 +22,9 @@ const authSlice = createSlice({
       state.error = null;
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+    },
+    resetReg: (state) => {
+      state.userRegistered = false;
     }
   },
   extraReducers: builder => {
@@ -90,5 +93,5 @@ const authSlice = createSlice({
   }
 });
 
-export const { resetAuth } = authSlice.actions;
+export const { resetAuth, resetReg } = authSlice.actions;
 export default authSlice.reducer;

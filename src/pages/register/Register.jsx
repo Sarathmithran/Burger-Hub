@@ -7,6 +7,7 @@ import { registerUser } from '../../features/auth/authThunk';
 import logo from '../../assets/img/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { resetReg } from '../../features/auth/authSlice';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,10 @@ const Register = () => {
         toast.success('Registered successful! Redirecting...', {
             position: "top-center",
             autoClose: 2000,
-            onClose: () => navigate('/login')
+            onClose: () => {
+              navigate('/login');
+              dispatch(resetReg()); 
+            }
         });
         }
         

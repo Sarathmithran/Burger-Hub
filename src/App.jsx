@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Register from './pages/Register/Register';
+import PublicRoute from './components/routes/PublicRoute';
 
 function App() {
 
@@ -32,8 +33,8 @@ function App() {
       <ToastContainer position="top-right" autoClose={2000} />
       <Navbar/>
       <Routes>
-        <Route path="/login" element={<Login />} /> 
-        <Route path="/register" element={<Register />} /> 
+        <Route path="/login" element={<PublicRoute> <Login /> </PublicRoute>} /> 
+        <Route path="/register" element={<PublicRoute> <Register /> </PublicRoute>} /> 
         <Route path="/" element={<Home />} />  
         <Route path="/menu" element={<Menu />} /> 
         <Route path="/menu/:id" element={<DetailPage />} />      
