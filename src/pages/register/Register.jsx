@@ -21,7 +21,6 @@ const Register = () => {
     useEffect(() => {
         if (userRegistered) {
         toast.success('Registered successful! Redirecting...', {
-            position: "top-center",
             autoClose: 2000,
             onClose: () => {
               navigate('/login');
@@ -32,7 +31,6 @@ const Register = () => {
         
         if (error) {
             toast.error(error, {
-                position: "top-center",
                 autoClose: 5000
             });
         }

@@ -20,7 +20,6 @@ const Login = () => {
   useEffect(() => {
     if (isAuthenticated && token) {
       toast.success('Login successful! Redirecting...', {
-        position: "top-center",
         autoClose: 2000,
         onClose: () => navigate('/')
       });
@@ -28,7 +27,6 @@ const Login = () => {
     
     if (error) {
       toast.error(error, {
-        position: "top-center",
         autoClose: 5000
       });
     }
