@@ -39,12 +39,12 @@ const DetailPage = () => {
   
       try {
         await dispatch(addToCart(payload)).unwrap();
-          toast.success('Item added to cart');
-        } catch (error) {
-          if (error?.status === 401) {
-            toast.error('Login to your account');
-            return;
-          }
+        toast.success('Item added to cart');
+      } catch (error) {
+        if (error?.status === 401) {
+          toast.error('Login to your account');
+          return;
+        }
         toast.error('Failed to add item to cart');
       }
   };

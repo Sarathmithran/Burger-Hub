@@ -3,6 +3,7 @@ import logo from '../../assets/img/logo.png'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../features/auth/authThunk';
+import { ShoppingCart } from 'lucide-react';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -53,11 +54,6 @@ const Navbar = () => {
             </li>
             <li>
               <a className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
-                Blog
-              </a>
-            </li>
-            <li>
-              <a className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
                 About
               </a>
             </li>
@@ -65,6 +61,12 @@ const Navbar = () => {
               <a className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
                 Contact
               </a>
+            </li>
+            <li>
+              <Link to={'/cart'} className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
+                <ShoppingCart className="w-4 h-4 inline-block" />
+                Cart
+              </Link>
             </li>
             {
               isAuthenticated ? (
@@ -174,16 +176,6 @@ const Navbar = () => {
             </li>
             <li className={`transform transition-all duration-300 ease-in-out ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-            }`} style={{ transitionDelay: isMenuOpen ? '200ms' : '0ms' }}>
-              <a
-                onClick={closeMenu}
-                className="block text-2xl text-gray-200 hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer"
-              >
-                Blog
-              </a>
-            </li>
-            <li className={`transform transition-all duration-300 ease-in-out ${
-              isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`} style={{ transitionDelay: isMenuOpen ? '250ms' : '0ms' }}>
               <a
                 onClick={closeMenu}
@@ -201,6 +193,17 @@ const Navbar = () => {
               >
                 Contact
               </a>
+            </li>
+            <li className={`transform transition-all duration-300 ease-in-out ${
+              isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`} style={{ transitionDelay: isMenuOpen ? '200ms' : '0ms' }}>
+              <Link
+                to={'/cart'}
+                onClick={closeMenu}
+                className="block text-2xl text-gray-200 hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer"
+              >
+                <ShoppingCart className="w-6 h-6 mr-1 inline-block" /> Cart
+              </Link>
             </li>
             <li className={`transform transition-all duration-300 ease-in-out ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'

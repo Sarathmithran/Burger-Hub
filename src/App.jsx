@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Register from './pages/register/Register';
 import PublicRoute from './components/routes/PublicRoute';
+import Cart from './pages/cart/Cart';
 
 function App() {
 
@@ -37,7 +38,8 @@ function App() {
         <Route path="/register" element={<PublicRoute> <Register /> </PublicRoute>} /> 
         <Route path="/" element={<Home />} />  
         <Route path="/menu" element={<Menu />} /> 
-        <Route path="/menu/:id" element={<DetailPage />} />      
+        <Route path="/menu/:id" element={<DetailPage />} /> 
+        <Route path="/cart" element={<Cart />} /> 
       </Routes>
       <Footer/>
     </>
