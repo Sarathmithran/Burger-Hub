@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useConfirmationModal from '../../hooks/useConfirmationModal';
 import ConfirmationModal from '../../components/confirmationModal/ConfirmationModal';
+import CartLoading from '../../components/svg/CartLoading';
 
 const Cart = () => {
     const dispatch = useDispatch();
-    const { cart } = useSelector(state => state.cart);
+    const { cart, loading } = useSelector(state => state.cart);
     const { isOpen, openModal, closeModal, modalConfig } = useConfirmationModal();
 
     useEffect(() => {
@@ -64,8 +65,22 @@ const Cart = () => {
     }
     const total = subtotal + tax + deliveryFee;
 
+    // if(loading) {
+    //     return <CartLoading />
+    // }
+
     return (
-        <div className={`${cart?.length === 0 ? 'min-h-2/4 pb-5' : 'min-h-screen'} bg-gray-50 pt-18`}>
+        <div className={`${cart?.length === 0 ? 'min-h-2/4 pb-5' : 'min-h-screen'} bg-gray-50 pt-18 `}>
+            {/* Loading Overlay */}
+            {loading && (
+                <div className="fixed inset-0 hero-overlay bg-opacity-70 z-50 flex items-center justify-center">
+                    <div className="text-center">
+                        <div className="mx-auto w-fit">
+                        <CartLoading />
+                        </div>
+                    </div>
+                </div>
+            )}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <ConfirmationModal
                     isOpen={isOpen}
