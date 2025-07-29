@@ -5,7 +5,7 @@ const menuSlice = createSlice({
   name: 'menu',
   initialState: {
     items: [],
-    status: 'idle',
+    loading: false,
     error: null,
     burgers: {
       items: [],
@@ -22,14 +22,14 @@ const menuSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchMenus.pending, state => {
-        state.status = 'loading';
+        state.loading = true;
       })
       .addCase(fetchMenus.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.loading = false;
         state.items = action.payload;
       })
       .addCase(fetchMenus.rejected, (state, action) => {
-        state.status = 'failed';
+        state.loading = false;
         state.error = action.error?.message || 'Something went wrong';
       })
 

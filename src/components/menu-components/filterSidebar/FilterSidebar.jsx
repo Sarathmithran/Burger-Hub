@@ -18,7 +18,7 @@ const FilterSidebar = ({
   className = "", 
   isMobile = false 
 }) => (
-  <div className={`bg-gray-800 p-6 mt-2 space-y-8 ${className} ${isMobile ? 'h-full overflow-y-auto' : ''}`}>
+  <div className={`bg-gray-50 p-6 mt-2 space-y-8 ${className} ${isMobile ? 'h-full overflow-y-auto' : ''}`}>
     <SearchSection searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
     
     <CategoriesSection 
@@ -37,4 +37,4 @@ const FilterSidebar = ({
   </div>
 );
 
-export default FilterSidebar
+export default FilterSidebar;

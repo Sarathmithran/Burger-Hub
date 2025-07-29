@@ -3,8 +3,8 @@ import { Search } from 'lucide-react';
 
 const SearchSection = ({ searchTerm, setSearchTerm }) => (
   <div className="space-y-3">
-    <h2 className="text-xl font-bold text-white flex items-center gap-2">
-      <Search className="w-5 h-5 text-red-500" />
+    <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+      <Search className="w-5 h-5 text-orange-500" />
       Search Menu
     </h2>
     <div className="relative">
@@ -12,7 +12,7 @@ const SearchSection = ({ searchTerm, setSearchTerm }) => (
       <input
         type="text"
         placeholder="Search delicious food..."
-        className="w-full pl-10 pr-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 focus:outline-none"
+        className="w-full pl-10 pr-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />

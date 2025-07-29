@@ -1,6 +1,7 @@
 import React from 'react';
 import heroVideo from '../../assets/video/hero-video.mp4';
 import heroImg from '../../assets/img/hero.webp';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
@@ -30,7 +31,7 @@ const HeroSection = () => {
             Craving something unforgettable? Our handcrafted burgers are made with the freshest ingredients and boldest flavors. 
             Come taste what greatness really means.
           </p>
-          <button className="btn bg-orange-500 hover:bg-orange-600 broder border-none shadow">Order Now</button>
+          <Link to="/menu" className="btn bg-orange-500 hover:bg-orange-600 border border-none shadow">Order Now</Link>
         </div>
       </div>
     </div>
