@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../features/auth/authThunk';
 import { ShoppingCart } from 'lucide-react';
+import useActivePage from '../../hooks/useActiveTab';
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const activePage = useActivePage()
   const { isAuthenticated } = useSelector((state) => state.auth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -43,12 +45,12 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <ul className="menu menu-horizontal px-1 hidden lg:flex">
             <li>
-              <Link to={'/'} className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
+              <Link to={'/'} className={`text-lg me-4 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200 ${activePage === '/' ? 'text-orange-400' : 'text-gray-200'}`}>
                 Home
               </Link>
             </li>
             <li>
-              <Link to={'/menu'} className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
+              <Link to={'/menu'} className={`text-lg me-4 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200 ${activePage === '/menu' ? 'text-orange-400' : 'text-gray-200'}`}>
                 Menu
               </Link>
             </li>
@@ -63,7 +65,7 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <Link to={'/cart'} className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
+              <Link to={'/cart'} className={`text-lg me-4 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200 ${activePage === '/cart' ? 'text-orange-400' : 'text-gray-200'}`}>
                 <ShoppingCart className="w-4 h-4 inline-block" />
                 Cart
               </Link>
