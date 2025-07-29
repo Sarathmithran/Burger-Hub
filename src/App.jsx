@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Register from './pages/register/Register';
 import PublicRoute from './components/routes/PublicRoute';
 import Cart from './pages/cart/Cart';
+import About from './pages/about/About';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="/menu" element={<Menu />} /> 
         <Route path="/menu/:id" element={<DetailPage />} /> 
         <Route path="/cart" element={<Cart />} /> 
+        <Route path="/about" element={<About />} /> 
       </Routes>
       <Footer/>
     </>
