@@ -1,58 +1,22 @@
 import React from 'react';
-import { Users, Target, Award, Clock, ChevronRight } from 'lucide-react';
-import heroImg from '../../assets/img/cheeseburger.webp';
+import { MessageSquareMore } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { stats, values } from '../../data/About';
 
 const About = () => {
-  const stats = [
-    { number: '1000+', label: 'Happy Customers', icon: Users },
-    { number: '50+', label: 'Burger Varieties', icon: Target },
-    { number: '8+', label: 'Years Serving', icon: Award },
-    { number: '30min', label: 'Average Delivery', icon: Clock }
-  ];
-
-  const values = [
-    {
-      icon: Target,
-      title: 'Quality First',
-      description: 'We use only the freshest ingredients and premium beef to craft burgers that exceed your expectations every single time.'
-    },
-    {
-      icon: Users,
-      title: 'Community Focus',
-      description: 'We\'re proud to be part of this community, supporting local suppliers and creating jobs for our neighbors.'
-    },
-    {
-      icon: Award,
-      title: 'Burger Excellence',
-      description: 'From our signature sauces to our perfectly toasted buns, every detail is crafted to create the ultimate burger experience.'
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-white pt-15">
       {/* Hero Section */}
-      <section className="hero min-h-[50vh] lg:min-h-[70vh] relative overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${heroImg})`,
-            filter: 'brightness(0.7)',
-          }}
-        ></div>
-        <div className="hero-overlay bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 bg-opacity-85"></div>
-        <div className="hero-content text-center z-10 px-4 sm:px-6 lg:px-8 text-white">
-          <div className="max-w-4xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-              About Our Burger Shop
-            </h1>
-            <p className="text-base sm:text-lg lg:text-xl opacity-90 leading-relaxed max-w-3xl mx-auto mb-6 lg:mb-8">
-              We're passionate burger artisans dedicated to crafting exceptional burgers 
-              that bring joy to every bite and create unforgettable dining experiences.
-            </p>
-            <button className="btn btn-lg bg-white text-orange-500 hover:bg-gray-100 border-none shadow-lg transform hover:scale-105 transition-all duration-300">
-              Our Story <ChevronRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
+      <section className="bg-gradient-to-br from-orange-400 to-orange-600 text-white py-16">
+        <div className="container mx-auto px-6 text-center">
+          <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-4 w-fit mx-auto mb-6">
+            <MessageSquareMore className="w-12 h-12 text-gray-800" />
           </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Inside Burger Hub</h1>
+          <p className="text-lg opacity-90 max-w-2xl mx-auto">
+            At Burger Hub, we craft delicious burgers that bring joy and unforgettable dining experiences.
+          </p>
         </div>
       </section>
 
@@ -97,9 +61,9 @@ const About = () => {
                 </p>
               </div>
               <div className="mt-6 lg:mt-8">
-                <button className="btn btn-outline border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
+                <Link to={'/menu'} className="btn btn-outline border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
                   View Our Menu
-                </button>
+                </Link>
               </div>
             </div>
             <div className="order-1 lg:order-2 relative">
@@ -126,11 +90,11 @@ const About = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {values.map((value, index) => (
-              <div key={index} className="text-center p-4 sm:p-6 shadow-lg rounded-xl bg-white bg-opacity-5 backdrop-blur-sm hover:bg-opacity-10 transition-all duration-300">
+              <div key={index} className="text-center p-4 sm:p-6 shadow-lg rounded-xl bg-white bg-opacity-5 backdrop-blur-sm hover:shadow-xl transition-all duration-300">
                 <div className="bg-orange-500 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto mb-3 sm:mb-4">
                   <value.icon className="w-6 h-6 sm:w-8 sm:h-8" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-gray-700">{value.title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-700">{value.title}</h3>
                 <p className="opacity-80 text-sm sm:text-base leading-relaxed text-gray-500">{value.description}</p>
               </div>
             ))}
