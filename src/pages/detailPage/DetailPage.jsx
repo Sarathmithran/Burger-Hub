@@ -5,6 +5,8 @@ import { fetchMenuDetails } from '../../features/menu/menuThunk';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { addToCart } from '../../features/cart/cartThunk';
+import BurgerLoading from '../../components/svg/BurgerLoading';
+import { Tabs } from '../../data/detailPageTabs';
 
 const DetailPage = () => {
 
@@ -12,7 +14,8 @@ const DetailPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');  
   const dispatch = useDispatch();
-  const item = useSelector(state => state.menu.menuDetails?.item || {});
+  const menuDetails = useSelector(state => state.menu.menuDetails);
+  const { item, loading } = menuDetails;
   const { menu, related } = item;
 
   useEffect(() => {
@@ -70,6 +73,16 @@ const DetailPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-28 pb-7">
+      {/* Loading Overlay */}
+      {loading && (
+      <div className="fixed inset-0 hero-overlay bg-opacity-70 z-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="mx-auto w-fit">
+            <BurgerLoading />
+          </div>
+        </div>
+      </div>
+      )}
       <div className="container mx-auto px-4 py-4 max-w-lg sm:max-w-2xl lg:max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Image Gallery */}
@@ -149,11 +162,7 @@ const DetailPage = () => {
         {/* Tabs Section */}
         <div className="mt-8 lg:mt-12">
           <div className="flex overflow-x-auto border-b border-gray-200">
-            {[
-              { key: 'description', label: 'Description' },
-              { key: 'ingredients', label: 'Ingredients' },
-              { key: 'nutrition', label: 'Nutrition' }
-            ].map(tab => (
+            {Tabs?.map(tab => (
               <button
                 key={tab.key}
                 className={`cursor-pointer px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${

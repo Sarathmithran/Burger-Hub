@@ -65,10 +65,6 @@ const Cart = () => {
     }
     const total = subtotal + tax + deliveryFee;
 
-    // if(loading) {
-    //     return <CartLoading />
-    // }
-
     return (
         <div className={`${cart?.length === 0 ? 'min-h-2/4 pb-5' : 'min-h-screen'} bg-gray-50 pt-18 `}>
             {/* Loading Overlay */}
@@ -119,7 +115,7 @@ const Cart = () => {
                                     {cart?.map((item) => (
                                         <div key={item.id} className="border-b border-gray-100 pb-6 last:border-b-0 last:pb-0">
                                             <div className="flex flex-col sm:flex-row gap-4">
-                                                <div className="relative flex-shrink-0">
+                                                <Link to={`/menu/${item?.menu?.id}`} className="relative flex-shrink-0">
                                                     <img
                                                         src={item?.menu?.image}
                                                         alt={item?.menu?.name}
@@ -128,12 +124,12 @@ const Cart = () => {
                                                     <div className="absolute -top-2 -left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium">
                                                         -10%
                                                     </div>
-                                                </div>
+                                                </Link>
 
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
                                                         <div className="flex-1">
-                                                            <h3 className="text-lg font-semibold text-gray-900 truncate">{item?.menu?.name}</h3>
+                                                            <Link to={`/menu/${item?.menu?.id}`} className="text-lg font-semibold text-gray-900 truncate">{item?.menu?.name}</Link>
                                                             <p className="text-gray-600 text-sm mb-2">{item?.menu?.description}</p>
 
                                                             <div className="flex items-center space-x-4 text-sm text-gray-500 mb-3">

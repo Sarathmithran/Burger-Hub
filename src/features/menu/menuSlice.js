@@ -14,7 +14,7 @@ const menuSlice = createSlice({
     },
     menuDetails: {
       item: [],
-      status: 'idle',
+      loading: false,
       error: null,
     },
   },
@@ -48,14 +48,14 @@ const menuSlice = createSlice({
 
       //fetching menu details
       .addCase(fetchMenuDetails.pending, state => {
-        state.menuDetails.status = 'loading';
+        state.menuDetails.loading = true;
       })
       .addCase(fetchMenuDetails.fulfilled, (state, action) => {
-        state.menuDetails.status = 'succeeded';
+        state.menuDetails.loading = false;
         state.menuDetails.item = action.payload;
       })
       .addCase(fetchMenuDetails.rejected, (state, action) => {
-        state.menuDetails.status = 'failed';
+        state.menuDetails.loading = false;
         state.menuDetails.error = action.error?.message || 'Something went wrong';
       });
   }
