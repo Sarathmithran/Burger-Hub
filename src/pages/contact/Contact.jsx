@@ -1,32 +1,12 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Check, MessageSquareMore  } from 'lucide-react';
+import { Phone, MapPin, Send, Check, MessageSquareMore  } from 'lucide-react';
+import { contactInfo, questionsAndANS } from '../../data/contact';
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: 'Call Us',
-      info: '+1 (555) 287-4371',
-      detail: 'Daily 10AM-11PM'
-    },
-    {
-      icon: Mail,
-      title: 'Email Us',
-      info: 'hello@burgerhub.com',
-      detail: 'We reply within 2 hours'
-    },
-    {
-      icon: MapPin,
-      title: 'Visit Us',
-      info: '456 Burger Street, Food City',
-      detail: 'Dine-in & takeout available'
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-gray-50 pt-18">
+    <div className="min-h-screen bg-gray-50 pt-15">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-orange-400 to-orange-600 text-white py-16">
         <div className="container mx-auto px-6 text-center">
@@ -128,7 +108,7 @@ const Contact = () => {
               </div>
 
               <div className="space-y-4">
-                {contactInfo.map((info, index) => (
+                {contactInfo?.map((info, index) => (
                   <div key={index} className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg">
                     <div className="bg-orange-100 rounded-full p-3">
                       <info.icon className="w-6 h-6 text-orange-500" />
@@ -171,28 +151,7 @@ const Contact = () => {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            {[
-              {
-                question: 'What are your operating hours?',
-                answer: 'We\'re open daily from 10:00 AM to 11:00 PM. Kitchen closes at 10:30 PM for dine-in customers.'
-              },
-              {
-                question: 'Do you offer delivery?',
-                answer: 'Yes! We deliver within a 5-mile radius. You can order through our website.'
-              },
-              {
-                question: 'Can I make reservations?',
-                answer: 'We operate on a first-come, first-served basis, but you can call ahead for large groups (8+ people) and we\'ll do our best to accommodate you.'
-              },
-              {
-                question: 'Do you have vegetarian options?',
-                answer: 'Absolutely! We offer delicious plant-based patties, veggie burgers, and plenty of vegetarian sides and salads.'
-              },
-              {
-                question: 'Can I customize my burger?',
-                answer: 'Of course! We love customization. You can add or remove any toppings, change the patty type, or create your own unique burger combination.'
-              }
-            ].map((faq, index) => (
+            {questionsAndANS?.map((faq, index) => (
               <div key={index} className="collapse collapse-plus bg-white mb-3 sm:mb-4 shadow-md hover:shadow-lg transition-shadow">
                 <input type="radio" name="faq-accordion" defaultChecked={index === 0} />
                 <div className="collapse-title text-gray-700 sm:text-lg lg:text-xl font-medium px-4 sm:px-6 py-3 sm:py-4">
