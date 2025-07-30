@@ -13,6 +13,7 @@ import Register from './pages/register/Register';
 import PublicRoute from './components/routes/PublicRoute';
 import Cart from './pages/cart/Cart';
 import About from './pages/about/About';
+import Contact from './pages/contact/Contact';
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/menu/:id" element={<DetailPage />} /> 
         <Route path="/cart" element={<Cart />} /> 
         <Route path="/about" element={<About />} /> 
+        <Route path="/contact" element={<Contact />} /> 
       </Routes>
       <Footer/>
     </>

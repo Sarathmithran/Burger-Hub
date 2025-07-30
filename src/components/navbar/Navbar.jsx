@@ -55,14 +55,14 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
+              <Link to={'/about'} className={`text-lg me-4 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200 ${activePage === '/about' ? 'text-orange-400' : 'text-gray-200'}`}>
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
+              <Link to={'/contact'} className={`text-lg me-4 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200 ${activePage === '/contact' ? 'text-orange-400' : 'text-gray-200'}`}>
                 Contact
-              </a>
+              </Link>
             </li>
             <li>
               <Link to={'/cart'} className={`text-lg me-4 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200 ${activePage === '/cart' ? 'text-orange-400' : 'text-gray-200'}`}>
