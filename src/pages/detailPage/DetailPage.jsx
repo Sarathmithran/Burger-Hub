@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { addToCart } from '../../features/cart/cartThunk';
 import BurgerLoading from '../../components/svg/BurgerLoading';
 import { Tabs } from '../../data/detailPageTabs';
+import { scrollToTop } from '../../utils/scroll';
 
 const DetailPage = () => {
 
@@ -57,7 +58,7 @@ const DetailPage = () => {
   };
 
   const resetMenuView  = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToTop();
     setQuantity(1);
     setActiveTab('description');
   }

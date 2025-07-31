@@ -43,7 +43,7 @@ const CustomerReview = () => {
                       {[...Array(review.rating)].map((_, i) => (
                         <Star
                           key={i}
-                          className="w-4 h-4 text-orange-500 fill-current"
+                          className="w-4 h-4 text-yellow-400 fill-current"
                         />
                       ))}
                     </div>
