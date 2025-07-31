@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBurgers } from "../../features/menu/menuThunk";
 import { Link } from "react-router-dom";
+import HomeMenu from "../skeltons/homeMenu/HomeMenu";
 
 const MenuSection = () => {
 
   const dispatch = useDispatch();
   const { burgers } = useSelector(state => state.menu);
-  const { items } = burgers;
+  const { items, loading } = burgers;
 
   useEffect(() => {
     dispatch(fetchBurgers());
@@ -26,37 +27,39 @@ const MenuSection = () => {
           <div class="w-24 h-1 bg-gradient-to-r from-red-500 to-orange-500 mx-auto mt-6"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {items.map(item => (
-            <Link to={`/menu/${item.id}`} class="flex flex-col justify-between cursor-pointer menu-item bg-white rounded-2xl shadow-lg overflow-hidden">
-              <div class="relative overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  class="w-full h-64 object-cover"
-                />
-                <div class="absolute top-4 right-4 price-badge text-white px-3 py-1 rounded-full font-bold text-lg">
-                  ${item.price}
+        {loading ? ( <HomeMenu count={6} /> ) : (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {items.map(item => (
+              <Link to={`/menu/${item.id}`} class="flex flex-col justify-between cursor-pointer menu-item bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="relative overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    class="w-full h-64 object-cover"
+                  />
+                  <div class="absolute top-4 right-4 price-badge text-white px-3 py-1 rounded-full font-bold text-lg">
+                    ${item.price}
+                  </div>
                 </div>
-              </div>
-              <div class="p-6">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">
-                  {item.name}
-                </h3>
-                <p class="text-gray-600 mb-4 leading-relaxed">
-                  {item.description}
-                </p>
-                <div class="flex items-center justify-between">
-                  <span class="text-sm text-gray-500">🕒 15 min</span>
-                  <button class="cursor-pointer bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full font-semibold transition-colors">
-                    Order Now
-                  </button>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                    {item.name}
+                  </h3>
+                  <p class="text-gray-600 mb-4 leading-relaxed">
+                    {item.description}
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm text-gray-500">🕒 15 min</span>
+                    <button class="cursor-pointer bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full font-semibold transition-colors">
+                      Order Now
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
+              </Link>
+            ))}
+          </div>
+        )}
+        
         <div class="text-center mt-12">
           <p class="text-lg text-gray-600 mb-6">
             Can't decide? Try our combo deals!

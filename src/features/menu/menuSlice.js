@@ -9,7 +9,7 @@ const menuSlice = createSlice({
     error: null,
     burgers: {
       items: [],
-      status: 'idle',
+      loading: false,
       error: null,
     },
     menuDetails: {
@@ -35,14 +35,14 @@ const menuSlice = createSlice({
 
       //fetching burgers menu
       .addCase(fetchBurgers.pending, state => {
-        state.burgers.status = 'loading';
+        state.burgers.loading = true;
       })
       .addCase(fetchBurgers.fulfilled, (state, action) => {
-        state.burgers.status = 'succeeded';
+        state.burgers.loading = false;
         state.burgers.items = action.payload;
       })
       .addCase(fetchBurgers.rejected, (state, action) => {
-        state.burgers.status = 'failed';
+        state.burgers.loading = false;
         state.burgers.error = action.error?.message || 'Something went wrong';
       })
 
