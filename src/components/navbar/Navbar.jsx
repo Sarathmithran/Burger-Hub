@@ -1,24 +1,14 @@
 import React, { useState } from 'react';
 import logo from '../../assets/img/logo.png'
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser } from '../../features/auth/authThunk';
+import { useSelector } from 'react-redux';
 import { ShoppingCart } from 'lucide-react';
 import useActivePage from '../../hooks/useActiveTab';
 
 const Navbar = () => {
-  const dispatch = useDispatch();
   const activePage = useActivePage()
   const { isAuthenticated } = useSelector((state) => state.auth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleLogout = async () => {
-    try {
-      dispatch(logoutUser());
-    } catch (err) {
-      console.error('Logout failed', err);  
-    }
-  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -64,32 +54,33 @@ const Navbar = () => {
                 Contact
               </Link>
             </li>
-            <li>
-              <Link to={'/cart'} className={`text-lg me-4 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200 ${activePage === '/cart' ? 'text-orange-400' : 'text-gray-200'}`}>
-                <ShoppingCart className="w-4 h-4 inline-block" />
-                Cart
-              </Link>
-            </li>
-            {
-              isAuthenticated ? (
-                <li>
-                  <Link onClick={() => {handleLogout()}} className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
-                    Logout
-                  </Link>
-                </li>
-              ) : (
-                <li>
-                  <Link to={'/login'} className="text-lg me-4 text-gray-200 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200">
-                    Login
-                  </Link>
-                </li>
-              )
+            { isAuthenticated &&
+              <li>
+                <Link to={'/cart'} className={`text-lg me-4 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200 ${activePage === '/cart' ? 'text-orange-400' : 'text-gray-200'}`}>
+                  <ShoppingCart className="w-4 h-4 inline-block" />
+                  Cart
+                </Link>
+              </li>
             }
-            {/* <li className="tooltip tooltip-bottom" data-tip="Hurry-up">
-              <a className="text-lg btn bg-orange-500 hover:bg-orange-600 border-orange-600 hover:border-orange-700 text-white transition-colors duration-200 rounded-full">
-                Order Now
-              </a>
-            </li> */}
+            {isAuthenticated ? (
+              <li>
+                <Link
+                  to="/profile"
+                  className={`text-lg me-4 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200 ${activePage === '/profile' ? 'text-orange-400' : 'text-gray-200'}`}
+                >
+                  Profile
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  to="/login"
+                  className={`text-lg me-4 hover:text-orange-400 hover:bg-transparent px-4 py-2 font-medium transition-colors duration-200 ${activePage === '/login' ? 'text-orange-400' : 'text-gray-200'}`}
+                >
+                  Login
+                </Link>
+              </li>
+            )}
           </ul>
 
           {/* Mobile Hamburger Menu */}
@@ -123,7 +114,9 @@ const Navbar = () => {
         isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
       }`}>
         <div className="flex justify-between items-center p-4 border-b border-gray-600">
-          <Link to={'/'} className="text-white transition-colors duration-200 cursor-pointer font-semibold flex items-center">
+          <Link to={'/'} 
+          onClick={closeMenu}
+          className="text-white transition-colors duration-200 cursor-pointer font-semibold flex items-center">
             <img src={logo} alt="logo" width={60} height={50}/>
             <div className="flex flex-col leading-tight">
               <span className="text-xl font-bold text-orange-400">Burger</span>
@@ -160,7 +153,7 @@ const Navbar = () => {
               <Link 
                 to={'/'}
                 onClick={closeMenu}
-                className="block text-2xl text-gray-200 hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer"
+                className={`block text-2xl hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer ${activePage === '/' ? 'text-orange-400' : 'text-gray-200'}`}
               >
                 Home
               </Link>
@@ -171,7 +164,7 @@ const Navbar = () => {
               <Link
                 to={'/menu'}
                 onClick={closeMenu}
-                className="block text-2xl text-gray-200 hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer"
+                className={`block text-2xl hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer ${activePage === '/menu' ? 'text-orange-400' : 'text-gray-200'}`}
               >
                 Menu
               </Link>
@@ -179,55 +172,63 @@ const Navbar = () => {
             <li className={`transform transition-all duration-300 ease-in-out ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`} style={{ transitionDelay: isMenuOpen ? '250ms' : '0ms' }}>
-              <a
+              <Link
+                to={'/about'}
                 onClick={closeMenu}
-                className="block text-2xl text-gray-200 hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer"
+                className={`block text-2xl hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer ${activePage === '/about' ? 'text-orange-400' : 'text-gray-200'}`}
               >
                 About
-              </a>
+              </Link>
             </li>
             <li className={`transform transition-all duration-300 ease-in-out ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`} style={{ transitionDelay: isMenuOpen ? '300ms' : '0ms' }}>
-              <a
+              <Link
+                to={'/contact'}
                 onClick={closeMenu}
-                className="block text-2xl text-gray-200 hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer"
+                className={`block text-2xl hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer ${activePage === '/contact' ? 'text-orange-400' : 'text-gray-200'}`}
               >
                 Contact
-              </a>
-            </li>
-            <li className={`transform transition-all duration-300 ease-in-out ${
-              isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-            }`} style={{ transitionDelay: isMenuOpen ? '200ms' : '0ms' }}>
-              <Link
-                to={'/cart'}
-                onClick={closeMenu}
-                className="block text-2xl text-gray-200 hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer"
-              >
-                <ShoppingCart className="w-6 h-6 mr-1 inline-block" /> Cart
               </Link>
             </li>
-            <li className={`transform transition-all duration-300 ease-in-out ${
+            { isAuthenticated && (
+                <li className={`transform transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                }`} style={{ transitionDelay: isMenuOpen ? '200ms' : '0ms' }}>
+                  <Link
+                    to={'/cart'}
+                    onClick={closeMenu}
+                    className={`block text-2xl hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer ${activePage === '/cart' ? 'text-orange-400' : 'text-gray-200'}`}
+                  >
+                    <ShoppingCart className="w-6 h-6 mr-1 inline-block" /> Cart
+                  </Link>
+                </li>
+            )}
+            { isAuthenticated ? (
+              <li className={`transform transition-all duration-300 ease-in-out ${
+                isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`} style={{ transitionDelay: isMenuOpen ? '300ms' : '0ms' }}>
+                <Link
+                to={'/profile'}
+                  onClick={closeMenu}
+                  className={`block text-2xl hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer ${activePage === '/profile' ? 'text-orange-400' : 'text-gray-200'}`}
+                >
+                  Profile
+                </Link>
+              </li>
+            ) : (
+              <li className={`transform transition-all duration-300 ease-in-out ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-            }`} style={{ transitionDelay: isMenuOpen ? '300ms' : '0ms' }}>
-              <Link
-              to={'/login'}
-                onClick={closeMenu}
-                className="block text-2xl text-gray-200 hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer"
-              >
-                Login
-              </Link>
-            </li>
-            {/* <li className={`pt-4 transform transition-all duration-300 ease-in-out ${
-              isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-            }`} style={{ transitionDelay: isMenuOpen ? '350ms' : '0ms' }}>
-              <a
-                onClick={closeMenu}
-                className="block w-full text-center text-xl bg-orange-500 hover:bg-orange-600 text-white py-4 rounded-lg transition-colors duration-200 cursor-pointer"
-              >
-                Order Now
-              </a>
-            </li> */}
+              }`} style={{ transitionDelay: isMenuOpen ? '300ms' : '0ms' }}>
+                <Link
+                to={'/login'}
+                  onClick={closeMenu}
+                  className={`block text-2xl hover:text-orange-400 transition-colors duration-200 py-3 border-b border-gray-600 cursor-pointer ${activePage === '/login' ? 'text-orange-400' : 'text-gray-200'}`}
+                >
+                  Login
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>
