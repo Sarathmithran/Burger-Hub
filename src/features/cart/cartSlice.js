@@ -8,7 +8,13 @@ const cartSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    resetCart: (state) => {
+      state.cart = [];
+      state.loading = false;
+      state.error = null;
+    }
+  },
   extraReducers: builder => {
     builder
       // Handle getCart
@@ -49,4 +55,5 @@ const cartSlice = createSlice({
   }
 });
 
+export const { resetCart } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -64,9 +64,9 @@ const MenuSection = () => {
           <p class="text-lg text-gray-600 mb-6">
             Can't decide? Try our combo deals!
           </p>
-          <button class="cursor-pointer bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg transform transition-all hover:scale-105">
+          <Link to="/menu" class="cursor-pointer bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg transform transition-all hover:scale-105">
             View All Combos
-          </button>
+          </Link>
         </div>
       </div>
     </section>

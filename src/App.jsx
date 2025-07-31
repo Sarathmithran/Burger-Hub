@@ -14,6 +14,7 @@ import PublicRoute from './components/routes/PublicRoute';
 import Cart from './pages/cart/Cart';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
+import Profile from './pages/profile/Profile';
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/cart" element={<Cart />} /> 
         <Route path="/about" element={<About />} /> 
         <Route path="/contact" element={<Contact />} /> 
+        <Route path="/profile" element={<Profile />} /> 
       </Routes>
       <Footer/>
     </>

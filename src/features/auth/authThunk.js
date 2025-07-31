@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchUser, login, logout, register } from "./authAPI";
+import { editUser, fetchUser, login, logout, register } from "./authAPI";
 
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
@@ -42,6 +42,18 @@ export const getCurrentUser = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await fetchUser();
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data || err.message);
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  'auth/updateUser',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await editUser(payload);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || err.message);
