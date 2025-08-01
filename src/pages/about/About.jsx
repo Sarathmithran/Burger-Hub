@@ -1,7 +1,7 @@
 import React from 'react';
 import { MessageSquareMore } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { stats, values } from '../../data/about';
+import { stats, values } from '../../data/about.js';
 
 const About = () => {
 

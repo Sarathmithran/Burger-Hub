@@ -1,6 +1,6 @@
 import React from 'react'
 import { SortAsc, SortDesc } from 'lucide-react';
-import SORT_OPTIONS from '../../../data/sort'
+import SORT_OPTIONS from '../../../data/sort.js'
 
 const SortSection = ({ sortBy, setSortBy, sortOrder, setSortOrder }) => {
   const toggleSortOrder = () => {

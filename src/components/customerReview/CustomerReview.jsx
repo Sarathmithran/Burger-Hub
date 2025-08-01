@@ -1,6 +1,6 @@
 import React from "react";
 import { Star } from "lucide-react";
-import { reviews } from "../../data/customerReviews";
+import { reviews } from "../../data/customerReviews.js";
 
 const CustomerReview = () => {
   

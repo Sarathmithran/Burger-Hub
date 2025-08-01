@@ -1,6 +1,6 @@
 import React from 'react'
 import { SlidersHorizontal } from 'lucide-react';
-import CATEGORIES from '../../../data/categories'
+import CATEGORIES from '../../../data/categories.js'
 
 const CategoriesSection = ({ selectedCategory, setSelectedCategory }) => (
   <div className="space-y-4">

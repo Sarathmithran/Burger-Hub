@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, MapPin, Send, Check, MessageSquareMore  } from 'lucide-react';
-import { contactInfo, questionsAndANS } from '../../data/contact';
+import { contactInfo, questionsAndANS } from '../../data/contact.js';
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
