@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { profileSchema } from '../../validation/profileSchema';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentUser, logoutUser, updateUser } from '../../features/auth/authThunk';
+import { logoutUser, updateUser } from '../../features/auth/authThunk';
 import { toast } from 'react-toastify';
 import useConfirmationModal from '../../hooks/useConfirmationModal';
 import ConfirmationModal from '../../components/confirmationModal/ConfirmationModal';
@@ -18,10 +18,6 @@ const Profile = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
       resolver: yupResolver(profileSchema)
     });
-
-    useEffect(() => {
-        dispatch(getCurrentUser());
-    }, [dispatch]);
 
     useEffect(() => {
         if (user) {

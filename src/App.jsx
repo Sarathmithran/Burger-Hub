@@ -15,10 +15,20 @@ import Cart from './pages/cart/Cart';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
 import Profile from './pages/profile/Profile';
+import { getCurrentUser } from './features/auth/authThunk';
+import { useDispatch } from 'react-redux';
+import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 
 function App() {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      dispatch(getCurrentUser());
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     const handleUnauthorized = () => {
@@ -42,10 +52,10 @@ function App() {
         <Route path="/" element={<Home />} />  
         <Route path="/menu" element={<Menu />} /> 
         <Route path="/menu/:id" element={<DetailPage />} /> 
-        <Route path="/cart" element={<Cart />} /> 
+        <Route path="/cart" element={<ProtectedRoute> <Cart /> </ProtectedRoute>} /> 
         <Route path="/about" element={<About />} /> 
         <Route path="/contact" element={<Contact />} /> 
-        <Route path="/profile" element={<Profile />} /> 
+        <Route path="/profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute>} /> 
       </Routes>
       <Footer/>
     </>
