@@ -202,26 +202,15 @@ const Cart = () => {
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-gray-600">Delivery Fee</span>
-                                        <span className="font-medium text-gray-600">${deliveryFee.toFixed(2)}</span>
+                                        <span className={`font-medium ${deliveryFee === 0 ? 'text-green-500' : 'text-gray-600'}`}>
+                                            {deliveryFee === 0 ? 'FREE' : `${deliveryFee.toFixed(2)}`}
+                                        </span>
                                     </div>
                                     <div className="border-t pt-4">
                                         <div className="flex justify-between items-center">
                                             <span className="text-lg font-semibold text-gray-600">Total</span>
                                             <span className="text-xl font-bold text-orange-500">${total.toFixed(2)}</span>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div className="mb-6">
-                                    <div className="flex space-x-2">
-                                        <input
-                                            type="text"
-                                            placeholder="Promo code"
-                                            className="text-gray-600 flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                                        />
-                                        <button className="cursor-pointer px-4 py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors font-medium">
-                                            Apply
-                                        </button>
                                     </div>
                                 </div>
 
