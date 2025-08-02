@@ -7,7 +7,8 @@ const ConfirmationModal = ({
     title = "Confirm Action",
     description = "Are you sure you want to perform this action?",
     confirmText = "Confirm",
-    cancelText = "Cancel"
+    cancelText = "Cancel",
+    loading = false
 }) => {
     if (!isOpen) return null;
 
@@ -27,7 +28,8 @@ const ConfirmationModal = ({
                         className="btn bg-red-500 text-white border-transparent"
                         onClick={onConfirm}
                     >
-                        {confirmText}
+                        {loading ? (<span className="loading loading-dots loading-sm"></span>) 
+                        : confirmText}
                     </button>
                 </div>
             </div>
