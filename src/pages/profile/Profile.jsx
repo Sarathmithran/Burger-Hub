@@ -13,7 +13,7 @@ import { resetCart } from '../../features/cart/cartSlice';
 const Profile = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { user } = useSelector(state => state.auth);
+    const { user, loading } = useSelector(state => state.auth);
     const { isOpen, openModal, closeModal, modalConfig } = useConfirmationModal();
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
       resolver: yupResolver(profileSchema)
@@ -88,6 +88,7 @@ const Profile = () => {
       <div className="max-w-2xl mx-auto pt-20">
         <ConfirmationModal
             isOpen={isOpen}
+            loading={loading}
             onClose={closeModal}
             onConfirm={modalConfig.onConfirm}
             title={modalConfig.title}
@@ -200,7 +201,7 @@ const Profile = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    Save Profile
+                    {loading ? 'Saving...' : 'Save Profile'}
                 </button>
                 </div>
             </form>
