@@ -4,3 +4,8 @@
 body {
   font-family: 'Poppins', sans-serif;
 }
+
+.radio:checked,
+.radio[aria-checked="true"] {
+  background-color: white;
+}

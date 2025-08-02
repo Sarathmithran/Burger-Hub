@@ -18,6 +18,7 @@ import Profile from './pages/profile/Profile';
 import { getCurrentUser } from './features/auth/authThunk';
 import { useDispatch } from 'react-redux';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
+import Checkout from './pages/checkout/Checkout';
 
 function App() {
 
@@ -56,6 +57,7 @@ function App() {
         <Route path="/about" element={<About />} /> 
         <Route path="/contact" element={<Contact />} /> 
         <Route path="/profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute>} /> 
+        <Route path="/checkout" element={<ProtectedRoute> <Checkout /> </ProtectedRoute>} /> 
       </Routes>
       <Footer/>
     </>

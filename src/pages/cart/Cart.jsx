@@ -2,14 +2,17 @@ import React, { useEffect } from 'react';
 import { Star, Clock, User, Plus, Minus, Trash2, ShoppingCart } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, getCart, removeFromCart } from '../../features/cart/cartThunk';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useConfirmationModal from '../../hooks/useConfirmationModal';
 import ConfirmationModal from '../../components/confirmationModal/ConfirmationModal';
 import CartLoading from '../../components/svg/CartLoading';
+import { scrollToTop } from '../../utils/scroll';
+import { calculateCartTotals } from '../../utils/calculateCartTotals';
 
 const Cart = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { cart, loading } = useSelector(state => state.cart);
     const { isOpen, openModal, closeModal, modalConfig } = useConfirmationModal();
 
@@ -49,21 +52,18 @@ const Cart = () => {
         openModal({
             title: "Confirm Removal",
             description: `Are you sure you want to remove ${item.name}?`,
-            confirmText: "Delete",
+            confirmText: "Remove",
             onConfirm: () => removeItem(item.id),
             confirmColor: "error"
         });
     };
 
-    const subtotal = cart.reduce((sum, item) => sum + (item?.menu?.price * item.quantity), 0);
-    const tax = subtotal * 0.08;
-    let deliveryFee = 0;
-    if (subtotal >= 25) {
-        deliveryFee = 0;
-    } else {
-        deliveryFee = 1;
+    const { subtotal, tax, deliveryFee, total } = calculateCartTotals(cart);
+
+    const checkOut = () => {
+        navigate('/checkout');
+        scrollToTop();
     }
-    const total = subtotal + tax + deliveryFee;
 
     return (
         <div className={`${cart?.length === 0 ? 'min-h-2/4 pb-5' : 'min-h-screen'} bg-gray-50 pt-18 `}>
@@ -79,6 +79,7 @@ const Cart = () => {
             )}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <ConfirmationModal
+                    loading={loading}
                     isOpen={isOpen}
                     onClose={closeModal}
                     onConfirm={modalConfig.onConfirm}
@@ -115,7 +116,7 @@ const Cart = () => {
                                     {cart?.map((item) => (
                                         <div key={item.id} className="border-b border-gray-100 pb-6 last:border-b-0 last:pb-0">
                                             <div className="flex flex-col sm:flex-row gap-4">
-                                                <Link to={`/menu/${item?.menu?.id}`} className="relative flex-shrink-0">
+                                                <Link to={`/menu/${item?.menu?.id}`} onClick={scrollToTop} className="relative flex-shrink-0">
                                                     <img
                                                         src={item?.menu?.image}
                                                         alt={item?.menu?.name}
@@ -129,7 +130,7 @@ const Cart = () => {
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
                                                         <div className="flex-1">
-                                                            <Link to={`/menu/${item?.menu?.id}`} className="text-lg font-semibold text-gray-900 truncate">{item?.menu?.name}</Link>
+                                                            <Link to={`/menu/${item?.menu?.id}`} onClick={scrollToTop} className="text-lg font-semibold text-gray-900 truncate">{item?.menu?.name}</Link>
                                                             <p className="text-gray-600 text-sm mb-2">{item?.menu?.description}</p>
 
                                                             <div className="flex items-center space-x-4 text-sm text-gray-500 mb-3">
@@ -202,8 +203,8 @@ const Cart = () => {
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-gray-600">Delivery Fee</span>
-                                        <span className={`font-medium ${deliveryFee === 0 ? 'text-green-500' : 'text-gray-600'}`}>
-                                            {deliveryFee === 0 ? 'FREE' : `${deliveryFee.toFixed(2)}`}
+                                        <span className={`font-medium ${deliveryFee === 0 ? 'text-green-500' : 'text-red-600'}`}>
+                                            {deliveryFee === 0 ? 'FREE' : `$${deliveryFee.toFixed(2)}`}
                                         </span>
                                     </div>
                                     <div className="border-t pt-4">
@@ -215,6 +216,7 @@ const Cart = () => {
                                 </div>
 
                                 <button
+                                    onClick={checkOut}
                                     className="w-full cursor-pointer bg-orange-500 hover:bg-orange-600 text-white py-4 rounded-xl font-semibold text-lg transition-colors flex items-center justify-center space-x-2"
                                 >
                                     <ShoppingCart className="w-5 h-5" />

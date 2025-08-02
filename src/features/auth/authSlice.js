@@ -57,6 +57,7 @@ const authSlice = createSlice({
         state.loading = true;
       })
       .addCase(logoutUser.fulfilled, (state) => {
+        state.loading = false;
         authSlice.caseReducers.resetAuth(state); //call reducer here
       })
       .addCase(logoutUser.rejected, (state, action) => {
@@ -98,7 +99,7 @@ const authSlice = createSlice({
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.data;
+        state.user = action.payload.user;
         state.isAuthenticated = true;
       })
       .addCase(updateUser.rejected, state => {
