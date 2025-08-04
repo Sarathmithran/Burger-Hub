@@ -52,6 +52,7 @@ This is the **frontend** (React + Vite) repository, which connects to a **Larave
 ## 📸 Screenshots
 
 ![Home Page](./src/assets/img//screenshots/home.png)
+![Login Page](./src/assets/img//screenshots/login.png)
 ![Menu Page](./src/assets/img//screenshots/menu.png)
 ![Detail Page](./src/assets/img//screenshots/detailpage.png)
 ![Cart Page](./src/assets/img//screenshots/cart.png)
