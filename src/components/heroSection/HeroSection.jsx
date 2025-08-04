@@ -2,8 +2,11 @@ import React from 'react';
 import heroVideo from '../../assets/video/hero-video.mp4';
 import heroImg from '../../assets/img/hero.webp';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const HeroSection = () => {
+  const { userName, isAuthenticated  } = useSelector((state) => state?.auth);
+
   return (
     <div className="hero min-h-screen relative overflow-hidden">
       <video
@@ -26,10 +29,9 @@ const HeroSection = () => {
       
       <div className="hero-content text-neutral-content text-center relative z-20">
         <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold">Welcome to Burger Hub</h1>
+          <h1 className="mb-5 text-5xl font-bold">Welcome {isAuthenticated && userName ? userName.split(" ")[0] : ""}</h1>
           <p className="mb-5">
-            Craving something unforgettable? Our handcrafted burgers are made with the freshest ingredients and boldest flavors. 
-            Come taste what greatness really means.
+            Craving something unforgettable? Try our bold, handcrafted burgers made with the freshest ingredients.
           </p>
           <Link to="/menu" className="btn bg-orange-500 hover:bg-orange-600 border border-none shadow">Order Now</Link>
         </div>

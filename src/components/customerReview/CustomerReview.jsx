@@ -5,7 +5,7 @@ import { reviews } from "../../data/customerReviews.js";
 const CustomerReview = () => {
   
   return (
-    <section className="py-12 lg:py-20 bg-white">
+    <section className="py-12 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 lg:mb-12">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">
@@ -21,7 +21,7 @@ const CustomerReview = () => {
           {reviews?.map((review, index) => (
             <div
               key={index}
-              className="card bg-gray-50 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="card bg-white border shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <div className="card-body p-4 sm:p-6">
                 <div className="flex items-center mb-3">
@@ -47,6 +47,7 @@ const CustomerReview = () => {
                         />
                       ))}
                     </div>
+                    
                   </div>
                 </div>
                 <p className="text-gray-600 text-sm sm:text-base italic">
