@@ -19,6 +19,7 @@ import { getCurrentUser } from './features/auth/authThunk';
 import { useDispatch } from 'react-redux';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import Checkout from './pages/checkout/Checkout';
+import NotFound from './pages/404/NotFound';
 
 function App() {
 
@@ -57,7 +58,8 @@ function App() {
         <Route path="/about" element={<About />} /> 
         <Route path="/contact" element={<Contact />} /> 
         <Route path="/profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute>} /> 
-        <Route path="/checkout" element={<ProtectedRoute> <Checkout /> </ProtectedRoute>} /> 
+        <Route path="/checkout" element={<ProtectedRoute> <Checkout /> </ProtectedRoute>} />
+        <Route path="*" element={<NotFound />} /> 
       </Routes>
       <Footer/>
     </>
