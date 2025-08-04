@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBurgers } from "../../features/menu/menuThunk";
 import { Link } from "react-router-dom";
 import HomeMenu from "../skeltons/homeMenu/HomeMenu";
+import { scrollToTop } from "../../utils/scroll";
 
 const MenuSection = () => {
 
@@ -30,7 +31,7 @@ const MenuSection = () => {
         {loading ? ( <HomeMenu count={6} /> ) : (
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {items.map(item => (
-              <Link to={`/menu/${item.id}`} class="flex flex-col justify-between cursor-pointer menu-item bg-white rounded-2xl shadow-lg overflow-hidden">
+              <Link to={`/menu/${item.id}`} onClick={scrollToTop} class="flex flex-col justify-between cursor-pointer menu-item bg-white rounded-2xl shadow-lg overflow-hidden">
                 <div class="relative overflow-hidden">
                   <img
                     src={item.image}

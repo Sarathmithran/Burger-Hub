@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../features/cart/cartThunk';
 import { toast } from 'react-toastify';
-import MenuItemCardSkeleton from '../../skeltons/menuItemCardSkeleton/MenuItemCardSkeleton';
+import { scrollToTop } from '../../../utils/scroll';
 
 const MenuItemCard = ({ items }) => {
 
@@ -33,7 +33,7 @@ const MenuItemCard = ({ items }) => {
         {items.map(item => (
             <div key={item.id} className="bg-white cursor-pointer rounded-xl shadow-md hover:shadow-xl transition-all duration-300 
             hover:-translate-y-1 border border-gray-200 overflow-hidden">
-                <Link to={`/menu/${item.id}`}>
+                <Link to={`/menu/${item.id}`} onClick={scrollToTop}>
                     <figure className="relative overflow-hidden">
                     <img 
                         src={item.image} 

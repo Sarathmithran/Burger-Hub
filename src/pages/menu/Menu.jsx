@@ -87,6 +87,9 @@ const Menu = () => {
           <div className="fixed inset-0 bg-black/50 z-50 lg:hidden" onClick={() => setIsMobileFilterOpen(false)}>
             <div 
               className="absolute top-0 left-0 w-80 h-full bg-gray-50 shadow-lg transform transition-transform duration-300 ease-in-out"
+              style={{
+                animation: 'slideIn 0.3s ease-out'
+              }}
               onClick={(e) => e.stopPropagation()}
             >
               <FilterSidebar 
