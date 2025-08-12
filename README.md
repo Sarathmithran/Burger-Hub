@@ -4,6 +4,8 @@
 
 This is the **frontend** (React + Vite) repository, which connects to a **Laravel backend** via **Sanctum authentication** and a REST API.
 
+- [Backend Repo](https://github.com/Sarathmithran/Burger-Hub-api)
+
 ---
 
 ## 🌟 Features
@@ -51,11 +53,23 @@ This is the **frontend** (React + Vite) repository, which connects to a **Larave
 
 ## 📸 Screenshots
 
-![Home Page](./src/assets/img//screenshots/home.png)
-![Login Page](./src/assets/img//screenshots/login.png)
-![Menu Page](./src/assets/img//screenshots/menu.png)
-![Detail Page](./src/assets/img//screenshots/detailpage.png)
-![Cart Page](./src/assets/img//screenshots/cart.png)
+**🏠 Home Page**  
+![Home Page](./src/assets/img/screenshots/home.png)
+
+**🔑 Login Page**  
+![Login Page](./src/assets/img/screenshots/login.png)
+
+**📜 Menu Page**  
+![Menu Page](./src/assets/img/screenshots/menu.png)
+
+**📄 Detail Page**  
+![Detail Page](./src/assets/img/screenshots/detailpage.png)
+
+**🛒 Cart Page**  
+![Cart Page](./src/assets/img/screenshots/cart.png)
+
+**💳 Checkout Page**  
+![Checkout Page](./src/assets/img/screenshots/checkout.png)
 
 ---
 
