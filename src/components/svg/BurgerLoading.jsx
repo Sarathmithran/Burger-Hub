@@ -19,7 +19,7 @@ const BurgerLoading = () => {
         </div>
       </div>
       <p className="text-center text-md font-medium text-gray-800 dark:text-white mt-6">
-        Preparing your delicious burger...
+        Preparing your item...
       </p>
     </div>
   )
