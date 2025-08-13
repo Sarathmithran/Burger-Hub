@@ -3,7 +3,7 @@ import { Search, X } from 'lucide-react';
 
 const SearchSection = ({ searchTerm, setSearchTerm, setIsMobileFilterOpen }) => (
   <div className="space-y-3">
-    <div className='flex justify-end'>
+    <div className='flex justify-end md:hidden'>
       <button onClick={() => setIsMobileFilterOpen(false)}><X /></button>
     </div>
     <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">

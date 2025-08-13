@@ -2,6 +2,7 @@ import React from 'react';
 import { MessageSquareMore } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { stats, values } from '../../data/about.js';
+import burgerImg from '../../assets/img/burger.jpeg'
 
 const About = () => {
 
@@ -68,7 +69,7 @@ const About = () => {
             </div>
             <div className="order-1 lg:order-2 relative">
               <img 
-                src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800&h=600&fit=crop" 
+                src={burgerImg} 
                 alt="Fresh burger preparation" 
                 className="rounded-2xl shadow-2xl w-full h-64 sm:h-80 lg:h-96 object-cover transform hover:scale-105 transition-transform duration-500"
               />
