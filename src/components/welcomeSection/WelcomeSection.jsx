@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { scrollToTop } from "../../utils/scroll";
 
 const WelcomeSection = () => {
   return (
@@ -62,7 +61,7 @@ const WelcomeSection = () => {
 
           {/* Call to Action */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to={'/menu'} onClick={scrollToTop} className="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+            <Link to={'/menu'} className="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
               <span className="flex items-center gap-2">
                 Explore Our Menu
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -71,7 +70,7 @@ const WelcomeSection = () => {
               </span>
             </Link>
 
-            <Link to={'/about'} onClick={scrollToTop} className="group bg-white/80 backdrop-blur-sm hover:bg-white text-gray-700 font-semibold px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border border-gray-200/50">
+            <Link to={'/about'} className="group bg-white/80 backdrop-blur-sm hover:bg-white text-gray-700 font-semibold px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border border-gray-200/50">
               <span className="flex items-center gap-2">
                 Know More
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

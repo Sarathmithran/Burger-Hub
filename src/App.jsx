@@ -20,6 +20,7 @@ import { useDispatch } from 'react-redux';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import Checkout from './pages/checkout/Checkout';
 import NotFound from './pages/404/NotFound';
+import ScrollToTop from './utils/scrollToTop';
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
     <>
       <ToastContainer position="top-center" autoClose={2000} />
       <Navbar/>
+      <ScrollToTop />
       <Routes>
         <Route path="/login" element={<PublicRoute> <Login /> </PublicRoute>} /> 
         <Route path="/register" element={<PublicRoute> <Register /> </PublicRoute>} /> 

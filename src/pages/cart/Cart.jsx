@@ -7,7 +7,6 @@ import { toast } from 'react-toastify';
 import useConfirmationModal from '../../hooks/useConfirmationModal';
 import ConfirmationModal from '../../components/confirmationModal/ConfirmationModal';
 import CartLoading from '../../components/svg/CartLoading';
-import { scrollToTop } from '../../utils/scroll';
 import { calculateCartTotals } from '../../utils/calculateCartTotals';
 
 const Cart = () => {
@@ -62,7 +61,6 @@ const Cart = () => {
 
     const checkOut = () => {
         navigate('/checkout');
-        scrollToTop();
     }
 
     return (
@@ -116,7 +114,7 @@ const Cart = () => {
                                     {cart?.map((item) => (
                                         <div key={item.id} className="border-b border-gray-100 pb-6 last:border-b-0 last:pb-0">
                                             <div className="flex flex-col sm:flex-row gap-4">
-                                                <Link to={`/menu/${item?.menu?.id}`} onClick={scrollToTop} className="relative flex-shrink-0">
+                                                <Link to={`/menu/${item?.menu?.id}`} className="relative flex-shrink-0">
                                                     <img
                                                         src={item?.menu?.image}
                                                         alt={item?.menu?.name}
@@ -130,7 +128,7 @@ const Cart = () => {
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
                                                         <div className="flex-1">
-                                                            <Link to={`/menu/${item?.menu?.id}`} onClick={scrollToTop} className="text-lg font-semibold text-gray-900 truncate">{item?.menu?.name}</Link>
+                                                            <Link to={`/menu/${item?.menu?.id}`} className="text-lg font-semibold text-gray-900 truncate">{item?.menu?.name}</Link>
                                                             <p className="text-gray-600 text-sm mb-2">{item?.menu?.description}</p>
 
                                                             <div className="flex items-center space-x-4 text-sm text-gray-500 mb-3">

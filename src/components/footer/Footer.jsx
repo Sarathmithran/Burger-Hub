@@ -2,7 +2,6 @@ import React from "react";
 import Diff from "../diff/Diff";
 import Payment from "../svg/Payment";
 import { Link } from "react-router-dom";
-import { scrollToTop } from "../../utils/scroll";
 
 const Footer = () => {
 
@@ -21,10 +20,10 @@ const Footer = () => {
 
         <nav className="text-center sm:text-left mb-6 sm:mb-0">
           <h6 className="footer-title">Menu</h6>
-          <Link to={'/'} onClick={scrollToTop} className="link link-hover block">Home</Link>
-          <Link to={'/menu'} onClick={scrollToTop} className="link link-hover block">Menu</Link>
-          <Link to={'/about'} onClick={scrollToTop} className="link link-hover block">About</Link>
-          <Link to={'/contact'} onClick={scrollToTop} className="link link-hover block">Contact</Link>
+          <Link to={'/'} className="link link-hover block">Home</Link>
+          <Link to={'/menu'} className="link link-hover block">Menu</Link>
+          <Link to={'/about'} className="link link-hover block">About</Link>
+          <Link to={'/contact'} className="link link-hover block">Contact</Link>
         </nav>
 
         <nav className="text-center sm:text-left">

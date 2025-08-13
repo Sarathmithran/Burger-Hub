@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { calculateCartTotals } from '../../utils/calculateCartTotals';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import { scrollToTop } from '../../utils/scroll';
 
 const Checkout = () => {
   const [showAllItems, setShowAllItems] = useState(false);
@@ -44,7 +43,7 @@ const Checkout = () => {
                         </div>
                         <h2 className="card-title text-lg md:text-xl text-gray-700">Customer Information</h2>
                     </div>
-                    <Link to={"/profile"} onClick={scrollToTop}>
+                    <Link to={"/profile"}>
                         <Edit className="w-4 h-4 text-gray-500 cursor-pointer hover:text-orange-500" />
                     </Link>
                   </div>
@@ -100,7 +99,7 @@ const Checkout = () => {
                         </div>
                         <h2 className="card-title text-lg md:text-xl text-gray-700">Delivery Details</h2>  
                     </div>
-                    <Link to={"/profile"} onClick={scrollToTop}>
+                    <Link to={"/profile"}>
                         <Edit className="w-4 h-4 text-gray-500 cursor-pointer hover:text-orange-500" />
                     </Link>
                   </div>
@@ -166,11 +165,11 @@ const Checkout = () => {
                  <div className="space-y-3 mb-6">
                   {displayedItems?.map((item) => (
                     <div key={item.id} className="flex items-center gap-3 p-2 border rounded-lg">
-                      <Link to={`/menu/${item?.menu?.id}`} onClick={scrollToTop} className="w-12 h-12 bg-orange-200 rounded-lg flex items-center justify-center text-lg">
+                      <Link to={`/menu/${item?.menu?.id}`} className="w-12 h-12 bg-orange-200 rounded-lg flex items-center justify-center text-lg">
                         <img src={item?.menu?.image} alt={item?.menu?.name} className="w-full h-full object-cover rounded-lg" />
                       </Link>
                       <div className="flex-1">
-                        <Link to={`/menu/${item?.menu?.id}`} onClick={scrollToTop} className="font-semibold text-sm text-gray-800">
+                        <Link to={`/menu/${item?.menu?.id}`} className="font-semibold text-sm text-gray-800">
                             {item?.menu?.name}
                         </Link>
                         <div className="text-xs text-gray-600">Qty: {item?.menu?.quantity}</div>
