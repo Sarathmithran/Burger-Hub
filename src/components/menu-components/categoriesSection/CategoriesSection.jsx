@@ -2,7 +2,7 @@ import React from 'react'
 import { SlidersHorizontal } from 'lucide-react';
 import CATEGORIES from '../../../data/categories.js'
 
-const CategoriesSection = ({ selectedCategory, setSelectedCategory }) => (
+const CategoriesSection = ({ selectedCategory, setSelectedCategory, setIsMobileFilterOpen }) => (
   <div className="space-y-4">
     <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
       <SlidersHorizontal className="w-5 h-5 text-orange-500" />
@@ -12,7 +12,7 @@ const CategoriesSection = ({ selectedCategory, setSelectedCategory }) => (
       {CATEGORIES.map(category => (
         <button
           key={category.value}
-          onClick={() => setSelectedCategory(category.value)}
+          onClick={() => {setSelectedCategory(category.value); setIsMobileFilterOpen(false)}}
           className={`w-full text-left px-4 py-3 rounded-xl cursor-pointer transition-all duration-200 flex items-center gap-3 ${
             selectedCategory === category.value 
               ? 'bg-orange-500 text-white shadow-lg transform scale-105' 

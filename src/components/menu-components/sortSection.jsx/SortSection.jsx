@@ -2,7 +2,7 @@ import React from 'react'
 import { SortAsc, SortDesc } from 'lucide-react';
 import SORT_OPTIONS from '../../../data/sort.js'
 
-const SortSection = ({ sortBy, setSortBy, sortOrder, setSortOrder }) => {
+const SortSection = ({ sortBy, setSortBy, sortOrder, setSortOrder, setIsMobileFilterOpen }) => {
   const toggleSortOrder = () => {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
@@ -14,7 +14,7 @@ const SortSection = ({ sortBy, setSortBy, sortOrder, setSortOrder }) => {
         <select 
           className="w-full px-2 py-3 cursor-pointer bg-white border border-gray-300 rounded-lg text-gray-800 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
           value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
+          onChange={(e) => {setSortBy(e.target.value); setIsMobileFilterOpen(false)}}
         >
           {SORT_OPTIONS.map(option => (
             <option key={option.value} value={option.value} className="bg-white text-gray-800">

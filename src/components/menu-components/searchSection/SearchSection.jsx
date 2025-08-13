@@ -1,8 +1,11 @@
 import React from 'react'
-import { Search } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 
-const SearchSection = ({ searchTerm, setSearchTerm }) => (
+const SearchSection = ({ searchTerm, setSearchTerm, setIsMobileFilterOpen }) => (
   <div className="space-y-3">
+    <div className='flex justify-end'>
+      <button onClick={() => setIsMobileFilterOpen(false)}><X /></button>
+    </div>
     <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
       <Search className="w-5 h-5 text-orange-500" />
       Search Menu

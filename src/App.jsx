@@ -10,7 +10,6 @@ import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Register from './pages/register/Register';
-import PublicRoute from './components/routes/PublicRoute';
 import Cart from './pages/cart/Cart';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
@@ -21,6 +20,7 @@ import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import Checkout from './pages/checkout/Checkout';
 import NotFound from './pages/404/NotFound';
 import ScrollToTop from './utils/scrollToTop';
+import PublicRoute from './routes/PublicRoute';
 
 function App() {
 
