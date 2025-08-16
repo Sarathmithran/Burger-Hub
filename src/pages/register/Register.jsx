@@ -7,7 +7,7 @@ import { registerUser } from '../../features/auth/authThunk';
 import logo from '../../assets/img/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { resetReg } from '../../features/auth/authSlice';
+import { resetError, resetReg } from '../../features/auth/authSlice';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -30,9 +30,8 @@ const Register = () => {
         }
         
         if (error) {
-            toast.error(error, {
-                autoClose: 5000
-            });
+            toast.error(error, { autoClose: 5000 });
+            dispatch(resetError());
         }
     }, [userRegistered, error, navigate, dispatch]);
 

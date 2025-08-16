@@ -25,6 +25,9 @@ const authSlice = createSlice({
     },
     resetReg: (state) => {
       state.userRegistered = false;
+    },
+    resetError: (state) => {
+      state.error = null;
     }
   },
   extraReducers: builder => {
@@ -110,5 +113,5 @@ const authSlice = createSlice({
   }
 });
 
-export const { resetAuth, resetReg } = authSlice.actions;
+export const { resetAuth, resetReg, resetError } = authSlice.actions;
 export default authSlice.reducer;

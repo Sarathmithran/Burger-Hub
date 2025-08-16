@@ -7,6 +7,7 @@ import { loginUser } from '../../features/auth/authThunk';
 import logo from '../../assets/img/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { resetError } from '../../features/auth/authSlice';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -26,9 +27,8 @@ const Login = () => {
     }
     
     if (error) {
-      toast.error(error, {
-        autoClose: 5000
-      });
+      toast.error(error, { autoClose: 5000 });
+      dispatch(resetError());
     }
   }, [isAuthenticated, token, error, navigate, dispatch]);
 
